@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/rjbernaldo/deckard/issues"
   },
-  "homepage": "https://github.com/rjbernaldo/deckard#readme"
+  "homepage": "https://github.com/rjbernaldo/deckard#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "slackbots": "^0.5.1",
+    "sqlite3": "^3.1.2"
+  }
 }
