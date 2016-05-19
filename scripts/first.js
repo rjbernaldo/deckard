@@ -22,7 +22,6 @@ function first(robot) {
 
   robot.hear(/book rating: (.*)/i, function(res) {
     var bookQuery = res.match[1];
-    res.send('Searching for ratings for ' + bookQuery);
 
     var goodreadsKey = process.env.GOODREADS_KEY;
     var url = 'https://www.goodreads.com/book/title.xml?key=' + goodreadsKey + '&title=' + bookQuery;
@@ -32,8 +31,28 @@ function first(robot) {
         parseString(body, function(err, result) {
           var book = result.GoodreadsResponse.book[0];
 
-          res.send(book.title + ': ' +  book.average_rating);
+          res.send('Goodreads rating for ' + book.title + ': ' +  book.average_rating);
         });
+      } else {
+        console.log('error', err);
+      }
+    });
+  });
+
+  robot.hear(/movie rating: (.*)/i, function(res) {
+    var movieQuery = res.match[1];
+
+    var url = 'http://www.omdbapi.com/?t=' + movieQuery;
+
+    robot.http(url).get()(function(err, response, body) {
+      if (!err) {
+        var movie = JSON.parse(body);
+
+        var message = 'IMDB Rating for ' + movie.Title + ': ' + movie.imdbRating;
+
+        if (movie.Poster) message + ' (' + movie.Poster + ')'
+
+        res.send(message);
       } else {
         console.log('error', err);
       }
