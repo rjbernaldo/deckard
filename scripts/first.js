@@ -58,4 +58,21 @@ function first(robot) {
       }
     });
   });
+
+  robot.hear(/weather forecast: (.*)/i, function(res) {
+    var location = res.match[1];
+
+    var openweathermapKey = process.env.OPENWEATHERMAP_KEY;
+    var url = 'http://api.openweathermap.org/data/2.5/weather?APPID=' + openweathermapKey + '&q=' + location;
+
+    robot.http(url).get()(function(err, response, body) {
+      if (!err) {
+        var forecast = JSON.parse(body);
+
+        res.send('Weather forecast for ' + forecast.name + ': ' +  forecast.weather[0].description);
+      } else {
+        console.log('error', err);
+      }
+    });
+  });
 }
