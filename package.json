@@ -1,0 +1,29 @@
+{
+  "name": "deckard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/bot.js",
+  "bin": {
+    "deckard": "bot.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjbernaldo/deckard.git"
+  },
+  "author": "Rj Bernaldo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjbernaldo/deckard/issues"
+  },
+  "homepage": "https://github.com/rjbernaldo/deckard#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
