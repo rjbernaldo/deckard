@@ -1,9 +1,11 @@
+'use strict';
+
 var expect = require('chai').expect;
 
-describe('Deckard', function () {
-  it('should exist', function () {
+describe('Deckard', () => {
+  it('should exist', () => {
     expect(require('../../lib/deckard.js')).to.be.defined;
   });
 
-  var Deckard = require('../../lib/deckard.js');
+  let Deckard = require('../../lib/deckard.js');
 });
